@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -51,12 +52,14 @@ export default function Onboard3() {
       </div>
       <div className="w-full h-screen flex items-center bg-black text-white">
         <div className="tablet:relative w-full h-auto flex flex-col tablet:flex-row items-end">
-          <img
-            className="h-[40rem] w-full tablet:w-1/2 tablet:h-auto"
-            src="images/about/hackathon.png"
-            alt=""
-          />
-          {/* <div className="h-[50vh] tablet:w-1/2 tablet:h-auto"></div> */}
+          <figure className="h-[40rem] w-full tablet:w-1/2 relative">
+            <Image
+              fill
+              src={'/images/about/hackathon.png'}
+              alt="hackathon"
+              sizes="(max-width: 768px) 100%, 50%"
+            />
+          </figure>
           <div className="w-full tablet:w-1/2 h-auto flex flex-col justify-end pl-12 -translate-y-[6rem] tablet:translate-y-0 tablet:absolute tablet:right-0 tablet:bottom-0">
             <div className="font-pp text-[3rem] tablet:text-9xl">Awards</div>
             <nav className="mt-16 flex flex-col gap-3 text-2xl">

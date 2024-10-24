@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const frontEnd = ['html', 'css', 'javascript', 'react', 'git', 'github']
@@ -21,22 +22,28 @@ const mobile = [
 export default function Onboard5() {
   return (
     <section>
-      <div className="flex flex-col text-white justify-center items-center bg-black w-full h-[250vh] mobile:h-[160vh]">
-        <div className="font-pp text-5xl">Timeline</div>
+      <div className="flex flex-col text-white justify-center items-center bg-black w-full h-[200vh] mobile:h-[160vh]">
+        <div className="font-pp text-5xl mt-[10rem]">Timeline</div>
         <div className="text-1xl mobile:text-2xl mt-[3rem]">
           멋쟁이사자처럼 서강대학교는 3월부터 11월까지 다양한 활동을 함께
           합니다.
         </div>
-        <img
-          className="bg-black h-[80vh] tablet:h-[130vh] mt-[3rem] hidden mobile:block"
-          src="images/about/curriculumn.png"
-          alt="curriculmn-pc"
-        />
-        <img
-          className="bg-black w-[80vw] mt-[3rem] block mobile:hidden"
-          src="images/about/mb-curriculmn.png"
-          alt="curriculmn-mobile"
-        />
+        <figure className="bg-black w-full h-[80vh] tablet:h-[130vh] mt-[3rem] mb-[10rem] hidden mobile:block relative">
+          <Image
+            src="/images/about/curriculumn.png"
+            alt="curriculmn-pc"
+            fill
+            objectFit="contain"
+          />
+        </figure>
+        <figure className="bg-black w-[80vw] h-[70%] mt-[3rem] mb-[10rem] block mobile:hidden relative">
+          <Image
+            src="/images/about/mb-curriculmn.png"
+            alt="curriculmn-mobile"
+            fill
+            objectFit="contain"
+          />
+        </figure>
       </div>
       <div className="flex flex-col text-white justify-center items-center bg-black w-full h-screen">
         <div className="font-pp text-5xl">Lion Sprint</div>
@@ -57,12 +64,15 @@ export default function Onboard5() {
             {frontEnd.map((el, key) => (
               <figure
                 key={key}
-                className="flex justify-center items-center w-[8vw] h-[8vw] bg-white rounded-[50%] p-4">
-                <img
-                  className="w-[5vw]"
-                  src={`icon/logo/stack/${el}.png`}
-                  alt="sprint-front"
-                />
+                className="flex justify-center items-center w-[8vw] h-[8vw] bg-white rounded-[50%] p-4 relative">
+                <span className="w-[5vw] h-[5vw] relative">
+                  <Image
+                    src={`/icon/logo/stack/${el}.png`}
+                    alt="sprint-front"
+                    fill
+                    objectFit="contain"
+                  />
+                </span>
               </figure>
             ))}
           </div>
@@ -75,26 +85,32 @@ export default function Onboard5() {
               <figure
                 key={key}
                 className="flex justify-center items-center w-[8vw] h-[8vw] bg-white rounded-[50%] p-4">
-                <img
-                  className="w-[5vw]"
-                  src={`icon/logo/stack/${el}.png`}
-                  alt="sprint-front"
-                />
+                <span className="w-[5vw] h-[5vw] relative">
+                  <Image
+                    src={`/icon/logo/stack/${el}.png`}
+                    alt="sprint-front"
+                    fill
+                    objectFit="contain"
+                  />
+                </span>
               </figure>
             ))}
           </div>
         </div>
-        <div className="w-4/5 flex flex-col items-center justify-center mt-24 gap-[2rem] mobile:hidden overflow-scroll">
+        <div className="w-full flex flex-col items-center justify-center mt-24 gap-[2rem] mobile:hidden overflow-hidden">
           <div className="flex gap-[1rem]">
             {mobile.slice(0, 6).map((el, key) => (
               <figure
                 key={key}
                 className="flex justify-center items-center w-[60px] h-[60px] bg-white rounded-[50%] p-4">
-                <img
-                  className="w-[6vw]"
-                  src={`icon/logo/stack/${el}.png`}
-                  alt="sprint-front"
-                />
+                <span className="w-[6vw] h-[6vw] relative">
+                  <Image
+                    src={`/icon/logo/stack/${el}.png`}
+                    alt="sprint-front"
+                    fill
+                    objectFit="contain"
+                  />
+                </span>
               </figure>
             ))}
           </div>
@@ -103,11 +119,14 @@ export default function Onboard5() {
               <figure
                 key={key}
                 className="flex justify-center items-center w-[60px] h-[60px] bg-white rounded-[50%] p-4">
-                <img
-                  className="w-[6vw]"
-                  src={`icon/logo/stack/${el}.png`}
-                  alt="sprint-front"
-                />
+                <span className="w-[6vw] h-[6vw] relative">
+                  <Image
+                    src={`/icon/logo/stack/${el}.png`}
+                    alt="sprint-front"
+                    fill
+                    objectFit="contain"
+                  />
+                </span>
               </figure>
             ))}
           </div>
