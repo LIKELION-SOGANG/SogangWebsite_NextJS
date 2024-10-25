@@ -11,7 +11,7 @@ export default function ApplyPage() {
       <div className="desktop:hidden">
         <PCOnly />
       </div>
-      <div className="max-desktop:hidden overflow-x-hidden">
+      <div className="max-desktop:hidden ">
         <ApplySection />
       </div>
     </main>

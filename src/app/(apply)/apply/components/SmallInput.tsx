@@ -22,7 +22,7 @@ const SmallInput = ({
         className="text-[1.5rem] border-[1px] border-[#B7B7B7] w-full h-[5rem] shrink-0 rounded-[1rem]  p-[1.6rem_1.4rem]"
         placeholder={placeholder}
         name={name}
-        value={value || ''}
+        value={value}
         onChange={onChangeInput}></input>
     </div>
   )

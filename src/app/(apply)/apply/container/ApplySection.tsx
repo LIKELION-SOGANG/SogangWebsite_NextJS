@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../components/Button'
 import SmallInput from '../components/SmallInput'
 import PersonalInformationForm from './PersonalInformationForm'
@@ -10,15 +10,23 @@ import SaveComplete from './SaveComplete'
 
 const ApplySection = () => {
   const [step, setStep] = useState(0)
+  const [uniqueCode, setUniqueCode] = useState("");
+  const [isable, setIsable] = useState(false); 
 
   const onClickStep = () => {
     setStep(prev => prev + 1)
     window.scrollTo(0, 0)
   }
 
-  const onChangeInput = () => {
-    console.log('not yet')
+  const onChangeUniqueCode = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setUniqueCode(e.target.value);
   }
+
+  useEffect(() => {
+    if(uniqueCode.length == 10)
+      setIsable(true);
+    else setIsable(false)
+  },[uniqueCode])
 
   return (
     <section className="overflow-x-hidden pt-[2rem] bg-white text-black">
@@ -48,17 +56,21 @@ const ApplySection = () => {
 
               <div>
                 <SmallInput
-                  onChangeInput={onChangeInput}
-                  value=""
+                  onChangeInput={onChangeUniqueCode}
+                  value={uniqueCode}
                   name="uniqueNumber"
                   title="이미 작성하던 지원서가 있으시다면,"
                   placeholder="이메일로 발송된 고유번호를 입력해주세요."
                 />
                 <div className="mb-[1.2rem]"></div>
-                <Button
+                <div
+                  className={`${isable ? "cursor-pointer" : ""}`}>
+                  <Button
                   title="지원서 수정하기"
-                  isable={false}
+                  isable={isable}
                 />
+                </div>
+                
               </div>
             </div>
           ) : null}
