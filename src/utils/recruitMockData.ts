@@ -138,7 +138,7 @@ export const personalInformation = [
 ]
 
 export const personalPhoneNumber = {
-  name: 'phone',
+  name: 'phoneNumber',
   title: '전화번호',
   placeholder: '연락가능한 전화번호를 입력해주세요. ex) 010-1234-5678'
 }

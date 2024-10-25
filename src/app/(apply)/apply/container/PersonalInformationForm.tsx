@@ -1,10 +1,13 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import SmallInput from '../components/SmallInput'
 import Button from '../components/Button'
 import {
   personalInformation,
   personalPhoneNumber
 } from '@/utils/recruitMockData'
+import { stringify } from 'querystring'
 
 //
 //
@@ -14,11 +17,32 @@ interface PersonalStatementFormProps {
   onClickStep: () => void
 }
 
+interface InfoState {
+  name: string
+  studentNumber: string
+  email: string
+  phoneNumber: string
+}
+
 const PersonalInformationForm = ({
   onClickStep
 }: PersonalStatementFormProps) => {
-  const onChangeInput = () => {
-    console.log('not yet')
+  const [info, setInfo] = useState<InfoState>({
+    name: '',
+    studentNumber: '',
+    email: '',
+    phoneNumber: ''
+  })
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+
+    setInfo(prevInfo => ({
+      ...prevInfo,
+      [name as keyof InfoState]: value
+    }))
+
+    // console.log(info)
   }
 
   return (
@@ -26,10 +50,10 @@ const PersonalInformationForm = ({
       <div className="flex flex-col gap-[5rem] mb-[5rem]">
         {personalInformation.map((item, index) => (
           <SmallInput
-            onChangeInput={onChangeInput}
-            value=""
-            name=""
             key={index}
+            onChangeInput={onChangeInput}
+            value={info[item.name as keyof InfoState]}
+            name={item.name}
             title={item.title}
             placeholder={item.placeholder}
           />
@@ -37,8 +61,8 @@ const PersonalInformationForm = ({
 
         <SmallInput
           onChangeInput={onChangeInput}
-          value=""
-          name=""
+          value={info.phoneNumber}
+          name="phoneNumber"
           title={personalPhoneNumber.title}
           placeholder={personalPhoneNumber.placeholder}
         />

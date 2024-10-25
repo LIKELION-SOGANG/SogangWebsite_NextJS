@@ -10,23 +10,22 @@ import SaveComplete from './SaveComplete'
 
 const ApplySection = () => {
   const [step, setStep] = useState(0)
-  const [uniqueCode, setUniqueCode] = useState("");
-  const [isable, setIsable] = useState(false); 
+  const [uniqueCode, setUniqueCode] = useState('')
+  const [isable, setIsable] = useState(false)
 
   const onClickStep = () => {
     setStep(prev => prev + 1)
     window.scrollTo(0, 0)
   }
 
-  const onChangeUniqueCode = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setUniqueCode(e.target.value);
+  const onChangeUniqueCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUniqueCode(e.target.value)
   }
 
   useEffect(() => {
-    if(uniqueCode.length == 10)
-      setIsable(true);
+    if (uniqueCode.length == 10) setIsable(true)
     else setIsable(false)
-  },[uniqueCode])
+  }, [uniqueCode])
 
   return (
     <section className="overflow-x-hidden pt-[2rem] bg-white text-black">
@@ -63,14 +62,12 @@ const ApplySection = () => {
                   placeholder="이메일로 발송된 고유번호를 입력해주세요."
                 />
                 <div className="mb-[1.2rem]"></div>
-                <div
-                  className={`${isable ? "cursor-pointer" : ""}`}>
+                <div className={`${isable ? 'cursor-pointer' : ''}`}>
                   <Button
-                  title="지원서 수정하기"
-                  isable={isable}
-                />
+                    title="지원서 수정하기"
+                    isable={isable}
+                  />
                 </div>
-                
               </div>
             </div>
           ) : null}
