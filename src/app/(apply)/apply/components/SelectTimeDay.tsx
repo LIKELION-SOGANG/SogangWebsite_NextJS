@@ -5,7 +5,7 @@ const SelectTimeDay = () => {
   return (
     <div className="flex flex-col gap-[2rem]">
       <div className="text-[1.6rem] font-medium">
-        6. 면접 가능한 날짜와 시간을 모두 선택해주세요.
+        5. 면접 가능한 날짜와 시간을 모두 선택해주세요.
       </div>
       {meeting.map((item, index1) => {
         return (

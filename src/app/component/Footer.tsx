@@ -1,8 +1,6 @@
 'use-client'
 import { FOOTER } from '@/style/zIndex'
 import Link from 'next/link'
-import { relative } from 'path'
-import React from 'react'
 
 //
 //

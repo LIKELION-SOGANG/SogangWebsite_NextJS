@@ -1,51 +1,51 @@
 'use client'
-import { HEADER, MOBILE_MENU_LIST } from '@/style/zIndex'
-import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState, useEffect } from 'react'
-import { useLockBodyScroll } from 'react-use'
-
+import Image from 'next/image'
+import { HEADER, MOBILE_MENU_LIST } from '@/style/zIndex'
+import useScrollDirection from '@/hooks/useScrollDirection'
+import useMobileMenu from '@/hooks/useMobileMenu'
+import { usePathname } from 'next/navigation'
+import { AnimatePresence } from 'framer-motion'
+import Loading from './Loading'
+import useLoadingProgress from '@/hooks/useLoadingProgress'
 //
 //
 //
-
 export default function Header() {
-  const [isShowHeader, setIsShowHeader] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [isShowMobileMenu, setIsShowMobileMenu] = useState(false)
-  useLockBodyScroll(isShowMobileMenu)
+  const pathname = usePathname()
+  const isShowHeader = useScrollDirection()
+  const { isShowMobileMenu, showMobileMenu, hideMobileMenu } = useMobileMenu()
+  const { isLoading, loadingProgress, startLoading, setLoadingSpeed } =
+    useLoadingProgress(pathname)
 
-  const handleMobileHamburgerClick = () => {
-    setIsShowMobileMenu(true)
+  const handleMobileLinkClick = () => {
+    hideMobileMenu()
+    startLoading()
+    setLoadingSpeed(5)
   }
 
-  const handleMobileCloseMenuClick = () => {
-    setIsShowMobileMenu(false)
+  const handleLinkClick = () => {
+    startLoading()
+    setLoadingSpeed(5)
   }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window !== 'undefined') {
-        const currentScrollY = window.scrollY
-        if (currentScrollY > lastScrollY) {
-          setIsShowHeader(false)
-        } else {
-          setIsShowHeader(true)
-        }
-        setLastScrollY(currentScrollY)
-      }
-    }
+  const getLinkClass = (path: string) => {
+    return pathname === path
+      ? 'font-pp italic text-HeaderPC px-[0.3rem] relative after:content-[""] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-white after:w-full'
+      : 'font-pp font-light italic text-HeaderPC px-[0.3rem] relative after:content-[""] after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:bg-white after:w-0 hover:after:w-full hover:after:left-0 after:transition-all after:duration-300'
+  }
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll)
-      return () => {
-        window.removeEventListener('scroll', handleScroll)
-      }
-    }
-  }, [lastScrollY])
+  const getMobileLinkClass = (path: string) => {
+    return pathname === path
+      ? 'px-[3rem] py-[1.1rem] block border-b border-white underline'
+      : 'px-[3rem] py-[1.1rem] block border-b border-white'
+  }
 
   return (
     <>
+      <AnimatePresence>
+        {isLoading && <Loading loadingProgress={loadingProgress} />}
+      </AnimatePresence>
       <header
         className={`text-white mix-blend-difference w-full flex fixed top-0 p-[2.5rem] transition-transform duration-500 ${
           isShowHeader ? 'translate-y-0' : '-translate-y-full'
@@ -60,27 +60,32 @@ export default function Header() {
         <nav className="ml-auto hidden tablet:flex gap-[1.5rem]">
           <Link
             href={'/about'}
-            className="font-pp italic text-HeaderPC p-[0.5rem]">
+            onClick={handleLinkClick}
+            className={getLinkClass('/about')}>
             About
           </Link>
           <Link
             href={'/project'}
-            className="font-pp italic text-HeaderPC p-[0.5rem]">
+            onClick={handleLinkClick}
+            className={getLinkClass('/project')}>
             Project
           </Link>
           <Link
             href={'/people'}
-            className="font-pp italic text-HeaderPC p-[0.5rem]">
+            onClick={handleLinkClick}
+            className={getLinkClass('/people')}>
             People
           </Link>
           <Link
             href={'/recruit'}
-            className="font-pp italic text-HeaderPC p-[0.5rem]">
+            onClick={handleLinkClick}
+            className={getLinkClass('/recruit')}>
             Recruit
           </Link>
           <Link
             href={'/contact'}
-            className="font-pp italic text-HeaderPC p-[0.5rem]">
+            onClick={handleLinkClick}
+            className={getLinkClass('/contact')}>
             Contact
           </Link>
         </nav>
@@ -88,7 +93,7 @@ export default function Header() {
         {/* 햄버거 버튼 */}
         <button
           className="block ml-auto tablet:hidden py-[1rem] pl-[1rem] "
-          onClick={handleMobileHamburgerClick}>
+          onClick={showMobileMenu}>
           <Image
             src={'/icon/button/hamburger-white.svg'}
             width={20}
@@ -104,7 +109,7 @@ export default function Header() {
         }`}
         style={{ zIndex: MOBILE_MENU_LIST }}>
         <button
-          onClick={handleMobileCloseMenuClick}
+          onClick={hideMobileMenu}
           className="absolute top-[2rem] right-[1.5rem] p-[1rem]">
           <Image
             src={'/icon/button/closeX-white.svg'}
@@ -114,45 +119,35 @@ export default function Header() {
           />
         </button>
         <nav>
-          <ul className="font-pp text-[3.2rem] font-[300]">
+          <ul className="font-pp text-[3.2rem] font-[300] text-white">
             <Link
               href="/about"
-              onClick={() => {
-                setIsShowMobileMenu(false)
-              }}
-              className="px-[3rem] py-[1.1rem] block border-b border-white">
+              onClick={handleMobileLinkClick}
+              className={getMobileLinkClass('/about')}>
               About
             </Link>
             <Link
               href="/people"
-              onClick={() => {
-                setIsShowMobileMenu(false)
-              }}
-              className="px-[3rem] py-[1.1rem] block border-b border-white">
+              onClick={handleMobileLinkClick}
+              className={getMobileLinkClass('/people')}>
               People
             </Link>
             <Link
-              href="/project "
-              onClick={() => {
-                setIsShowMobileMenu(false)
-              }}
-              className="px-[3rem] py-[1.1rem] block border-b border-white">
+              href="/project"
+              onClick={handleMobileLinkClick}
+              className={getMobileLinkClass('/project')}>
               Project
             </Link>
             <Link
               href="/recruit"
-              onClick={() => {
-                setIsShowMobileMenu(false)
-              }}
-              className="px-[3rem] py-[1.1rem] block border-b border-white">
+              onClick={handleMobileLinkClick}
+              className={getMobileLinkClass('/recruit')}>
               Recruit
             </Link>
             <Link
               href="/contact"
-              onClick={() => {
-                setIsShowMobileMenu(false)
-              }}
-              className="px-[3rem] py-[1.1rem] block border-b border-white">
+              onClick={handleMobileLinkClick}
+              className={getMobileLinkClass('/contact')}>
               Contact
             </Link>
           </ul>

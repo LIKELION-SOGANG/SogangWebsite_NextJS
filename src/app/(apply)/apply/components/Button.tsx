@@ -1,7 +1,5 @@
-import React from 'react'
-
 interface ButtonProps {
-  title: String
+  title: string
   isable: boolean
 }
 

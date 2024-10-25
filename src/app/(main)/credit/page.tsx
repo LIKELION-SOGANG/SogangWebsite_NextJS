@@ -86,6 +86,30 @@ export default function CreditPage() {
                 Jeongyeon Lim
               </p>
             </li>
+            {/* TF Section */}
+            <li
+              className={`flex justify-between items-start gap-10 pl-[14vw] 
+              desktop:ml-24 desktop:pl-4`}>
+              <p
+                className={`text-right w-[35%] text-[1.6rem]
+                desktop:text-[1.9rem] desktop:whitespace-nowrap`}>
+                Task-Force
+              </p>
+              <p
+                className={`leading-10 flex-grow text-[1.6rem] desktop:text-[1.9rem]`}>
+                Byul Kim
+                <br />
+                Minwoo Yoo
+                <br />
+                Seoa Kim
+                <br />
+                Inyoung Chung
+                <br />
+                Bohyun Choi
+                <br />
+                Kyeongwoo Kim
+              </p>
+            </li>
           </ul>
 
           <p className="text-center text-[2.7rem]">✽</p>

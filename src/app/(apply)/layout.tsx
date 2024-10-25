@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import '@/style/globals.css'
 import { Figtree, Pp, Pretendard } from '@/utils/Font'
-import Header from '../component/Header'
 import ApplyHeader from './apply/components/ApplyHeader'
 //
 //
@@ -21,13 +20,15 @@ export default function RootLayout({
   return (
     <html
       lang="kr"
-      className={`${Figtree.variable} ${Pp.variable} ${Pretendard.variable} `}>
+      className={`${Figtree.variable} ${Pp.variable} ${Pretendard.variable} overflow-x-hidden`}>
       <body
         className={`${Figtree.className} ${Pp.className} ${Pretendard.className}`}>
-        <section className="pt-[2rem] bg-white text-black">
-          <div className="flex flex-col justify-center items-center ">
+        <section className=" bg-white text-black h-screen w-screen desktop:pt-[2rem]">
+          <div className="desktop:flex flex-col justify-center items-center bg-white">
             <div className="w-[56.2rem] ">
-              <ApplyHeader />
+              <div className="max-desktop:hidden">
+                <ApplyHeader />
+              </div>
               {children}
             </div>
           </div>

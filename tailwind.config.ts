@@ -57,8 +57,16 @@ const config: Config = {
           '0%': {
             transform: 'scaleX(1)'
           },
+          '100%': { transform: 'scaleX(0.3)' }
+        },
+        fadeinObject: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(50px)'
+          },
           '100%': {
-            transform: 'scaleX(0.3)'
+            opacity: '1',
+            transform: 'translateY(0px)'
           }
         }
       },
@@ -68,7 +76,8 @@ const config: Config = {
         infiniteSlideOriginal:
           'infiniteSlideOriginal 5s linear infinite forwards',
         scaleLeft: 'scaleLeft 0.5s ease-in',
-        scaleDownCenter: 'scaleDownCenter 0.5s ease-in forwards'
+        scaleDownCenter: 'scaleDownCenter 0.5s ease-in forwards',
+        fadeinObject: 'fadeinObject 5s linear forwards'
       }
     }
   },

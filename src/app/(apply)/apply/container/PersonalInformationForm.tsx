@@ -1,6 +1,4 @@
-'use client'
-
-import React, { useState } from 'react'
+import React from 'react'
 import SmallInput from '../components/SmallInput'
 import Button from '../components/Button'
 import {
@@ -8,32 +6,19 @@ import {
   personalPhoneNumber
 } from '@/utils/recruitMockData'
 
+//
+//
+//
+
 interface PersonalStatementFormProps {
   onClickStep: () => void
 }
 
-// 해야할 것
-// 1. 미입력시 예외 처리
-// 2. 이메일로 고유번호 발송
-// 3. 정상 입력 후 버튼 클릭시 데이터 페칭, 다음으로 넘어가기
-
 const PersonalInformationForm = ({
   onClickStep
 }: PersonalStatementFormProps) => {
-  const [personalInfo, setPersonalInfo] = useState({
-    name: '',
-    studentNumbder: '',
-    email: '',
-    phone: ''
-  })
-
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(personalInfo)
-    const { name, value } = e.target
-
-    setPersonalInfo(prev => {
-      return { ...prev, [name]: value }
-    })
+  const onChangeInput = () => {
+    console.log('not yet')
   }
 
   return (
@@ -42,18 +27,18 @@ const PersonalInformationForm = ({
         {personalInformation.map((item, index) => (
           <SmallInput
             onChangeInput={onChangeInput}
-            name={item.name}
+            value=""
+            name=""
             key={index}
             title={item.title}
-            value={personalInfo[item.name as keyof typeof personalInfo]}
             placeholder={item.placeholder}
           />
         ))}
 
         <SmallInput
           onChangeInput={onChangeInput}
-          name="phone"
-          value={personalInfo.phone}
+          value=""
+          name=""
           title={personalPhoneNumber.title}
           placeholder={personalPhoneNumber.placeholder}
         />

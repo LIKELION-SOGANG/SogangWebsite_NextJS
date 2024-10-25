@@ -3,6 +3,8 @@ import '@/style/globals.css'
 import { Figtree, Pp, Pretendard } from '@/utils/Font'
 import Header from '../component/Header'
 import Footer from '../component/Footer'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+
 //
 //
 //
@@ -24,6 +26,8 @@ export default function RootLayout({
     <html
       lang="kr"
       className={`${Figtree.variable} ${Pp.variable} ${Pretendard.variable}`}>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
       <body
         className={`${Figtree.className} ${Pp.className} ${Pretendard.className}`}>
         <Header />

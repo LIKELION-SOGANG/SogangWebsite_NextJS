@@ -3,7 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import TabItem from '../components/TabItem'
 import { Member } from '@/models/member-schema'
-
+//
+//
+//
 interface Member {
   _id: string
   name: string
@@ -13,7 +15,9 @@ interface Member {
 interface SecondSectionProps {
   Members: Member[]
 }
-
+//
+//
+//
 export default function SecondSection({ Members }: SecondSectionProps) {
   const [tabList, setTabList] = useState<number[]>([])
   const [selectedTab, setSelectedTab] = useState<number>()
@@ -24,7 +28,7 @@ export default function SecondSection({ Members }: SecondSectionProps) {
   useEffect(() => {
     const generations = Array.from(
       new Set(Members.map((member: Member) => parseInt(member.generation, 10)))
-    ) as number[]
+    ).sort((a, b) => a - b)
     setTabList(generations)
     setSelectedTab(parseInt(Members[Members.length - 1].generation))
   }, [Members])

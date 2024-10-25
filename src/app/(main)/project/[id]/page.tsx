@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import mockImg from '../container/mockImage/mockImg4.png'
 import CloseBtn from '../container/components/CloseBtn'
 import LinkBtn from '../container/components/LinkBtn'
 import { ModalPageProps, Project } from '@/type/project'

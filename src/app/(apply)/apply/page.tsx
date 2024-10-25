@@ -1,9 +1,5 @@
-import React from 'react'
 import ApplySection from './container/ApplySection'
-import EditPersonalInfo from './container/EditPersonalInfo'
-import PersonalInformationForm from './container/PersonalInformationForm'
-import PersonalStatementForm from './container/PersonalStatementForm'
-import SaveComplete from './container/SaveComplete'
+import PCOnly from './container/PCOnly'
 
 //
 //
@@ -12,9 +8,12 @@ import SaveComplete from './container/SaveComplete'
 export default function ApplyPage() {
   return (
     <main>
-      <ApplySection />
-      <SaveComplete />
-      <EditPersonalInfo />
+      <div className="desktop:hidden">
+        <PCOnly />
+      </div>
+      <div className="max-desktop:hidden overflow-x-hidden">
+        <ApplySection />
+      </div>
     </main>
   )
 }

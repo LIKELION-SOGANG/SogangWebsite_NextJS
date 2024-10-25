@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FAQObj } from '../../../../utils/recruitMockData'
 import ArrowLink from '../../../../../public/icon/button/FAQ-arrow-button.svg'
 
@@ -26,7 +26,6 @@ const FAQItem = ({ items }: Items) => {
                 <button
                   onClick={() =>
                     setOpen(prev => {
-                      console.log(prev)
                       const temp = [...prev]
                       temp[index] = !temp[index]
                       return temp
@@ -37,7 +36,7 @@ const FAQItem = ({ items }: Items) => {
                 </button>
               </div>
               <div
-                className={`${open[index] ? 'max-h-[5rem] mt-[1.4rem]' : 'max-h-0 mt-0'} overflow-hidden transition-all ease-in-out font-medium text-[1.6rem] whitespace-pre-line`}>
+                className={`${open[index] ? 'mt-[1.4rem]' : 'max-h-0 mt-0'} overflow-hidden transition-all ease-in-out font-medium text-[1.6rem] whitespace-pre-line`}>
                 {item.A}
               </div>
             </div>
@@ -48,4 +47,4 @@ const FAQItem = ({ items }: Items) => {
   )
 }
 
-export default FAQItem;
+export default FAQItem

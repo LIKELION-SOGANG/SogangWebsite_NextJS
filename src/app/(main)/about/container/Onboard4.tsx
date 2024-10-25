@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 
 const companies = [
   'samsung',
@@ -21,13 +20,11 @@ export default function Onboard4() {
       <div className="text-1xl tablet:text-3xl mt-4 tablet:mt-10">
         멋쟁이사자처럼 서강대학교 알럼나이들의 Possibility to Reality
       </div>
-      <div className="">
+      <div>
         <div
           className={`w-full tablet:w-max flex mt-[15rem] justify-center tablet:justify-start items-center gap-[4rem] tablet:gap-[8rem] overflow-hidden`}>
-          {companies.map((el, i) => (
-            <span
-              key={i}
-              className="relative h-[4rem] tablet:h-[5rem] w-[8rem] tablet:w-[20rem]">
+          {companies.map(el => (
+            <span className="relative h-[4rem] tablet:h-[5rem] w-[8rem] tablet:w-[20rem]">
               <Image
                 src={`/icon/logo/company/${el}.png`}
                 alt="possibility"

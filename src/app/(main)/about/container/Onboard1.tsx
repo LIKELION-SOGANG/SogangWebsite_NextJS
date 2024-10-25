@@ -3,18 +3,18 @@ import React from 'react'
 
 export default function Onboard1() {
   return (
-    <section>
+    <section className="overflow-hidden">
       <div className="text-white w-full h-[100vh] bg-black relative">
-        <span className="absolute w-[50vw] h-[47rem]">
+        <span className="absolute w-[50vw] h-[25vh] desktop:w-[50vw] desktop:h-[47rem]">
           <Image
-            className="blur-[5px]"
+            className="blur-[7px] desktop:blur-[5px]"
             src="/images/about/obj1.png"
             alt="object1"
             fill
             objectFit="contain"
           />
         </span>
-        <span className="absolute w-[36rem] h-[54rem] top-[20vh] right-0">
+        <span className="absolute w-[50vw] h-[54rem] tablet:w-[36rem] tablet:h-[54rem] top-[20vh] right-0">
           <Image
             className="origin-top-right scale-120"
             src="/images/about/obj2.png"
@@ -23,7 +23,7 @@ export default function Onboard1() {
             objectFit="contain"
           />
         </span>
-        <span className="absolute w-[72rem] h-[65rem] top-[70vh] left-[15vw]">
+        <span className="absolute w-[36rem] h-[32rem] tablet:w-[72rem] tablet:h-[65rem] top-[80vh] desktop:top-[70vh] right-[50vw] tablet:right-[40vw] desktop:right-[35vw]">
           <Image
             className="origin-top-right scale-75"
             src="/images/about/obj3.png"

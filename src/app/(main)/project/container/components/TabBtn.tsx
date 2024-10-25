@@ -1,10 +1,10 @@
-import { TabBtnProps } from "@/type/project"
+import { TabBtnProps } from '@/type/project'
 
 export default function TabBtn({
   generation,
   isSelected,
   onClickTab
-}:TabBtnProps) {
+}: TabBtnProps) {
   return (
     <div
       onClick={() => {
