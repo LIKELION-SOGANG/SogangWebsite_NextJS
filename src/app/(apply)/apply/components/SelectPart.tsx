@@ -1,14 +1,20 @@
 import React from 'react'
 
-const SelectPart = () => {
+const SelectPart = ({
+  setPart
+}: {
+  setPart: React.Dispatch<React.SetStateAction<string>>
+}) => {
   return (
     <div className="text-[1.6rem]">
       <div className="text-[#424242] font-medium mb-[1.3rem]">지원분야</div>
       <div className="relative">
-        <select className="w-full border-[1px] border-[#B7B7B7] p-[1.5rem] rounded-[1rem] appearance-none">
+        <select
+          onChange={e => setPart(e.target.value)}
+          className="w-full border-[1px] border-[#B7B7B7] p-[1.5rem] rounded-[1rem] appearance-none">
           <option value="">지원 분야를 선택해주세요.</option>
-          <option value="">Front-End</option>
-          <option value="">Back-End</option>
+          <option value="Front-End">Front-End</option>
+          <option value="Back-End">Back-End</option>
         </select>
         <div className="pointer-events-none absolute top-[50%] right-[2rem] trnasform translate-y-[-50%]">
           <svg
