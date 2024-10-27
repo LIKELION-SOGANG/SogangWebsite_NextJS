@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface SmallInputProps {
-  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChangeSmallInput: (e: React.ChangeEvent<HTMLInputElement>) => void
   placeholder: string
   name: string
   value: string
@@ -13,7 +13,7 @@ const SmallInput = ({
   placeholder,
   name,
   value,
-  onChangeInput
+  onChangeSmallInput
 }: SmallInputProps) => {
   return (
     <div>
@@ -23,7 +23,7 @@ const SmallInput = ({
         placeholder={placeholder}
         name={name}
         value={value}
-        onChange={onChangeInput}></input>
+        onChange={onChangeSmallInput}></input>
     </div>
   )
 }

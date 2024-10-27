@@ -55,7 +55,7 @@ const ApplySection = () => {
 
               <div>
                 <SmallInput
-                  onChangeInput={onChangeUniqueCode}
+                  onChangeSmallInput={onChangeUniqueCode}
                   value={uniqueCode}
                   name="uniqueNumber"
                   title="이미 작성하던 지원서가 있으시다면,"

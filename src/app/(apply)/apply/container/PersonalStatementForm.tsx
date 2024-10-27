@@ -26,6 +26,8 @@ const PersonalStatementForm = ({ onClickStep }: PersonalStatementFormProps) => {
     q3: '',
     q4: ''
   })
+  const [selected, setSelected] = useState<Set<string>>(new Set())
+  const [gitHub, setGitHub] = useState('')
 
   const onChangeLargeInput = (
     e: React.ChangeEvent<HTMLTextAreaElement>,
@@ -41,8 +43,30 @@ const PersonalStatementForm = ({ onClickStep }: PersonalStatementFormProps) => {
     console.log(answer)
   }
 
-  const onChangeSmallInput = () => {
-    console.log('asddsf')
+  const onClickPossibleDays = (day: string, time: number) => {
+    const key = `${day} - ${time}:00 ~ ${time + 1}:00`
+
+    setSelected(prev => {
+      const newSet = new Set(prev)
+
+      if (newSet.has(key)) {
+        newSet.delete(key)
+      } else {
+        newSet.add(key)
+      }
+
+      return newSet
+    })
+
+    console.log(selected)
+  }
+
+  const onChangeSmallInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+
+    setGitHub(value)
+
+    console.log(gitHub)
   }
 
   return (
@@ -62,11 +86,14 @@ const PersonalStatementForm = ({ onClickStep }: PersonalStatementFormProps) => {
         )
       })}
 
-      <SelectTimeDay />
+      <SelectTimeDay
+        selected={selected}
+        onClickPossibleDays={onClickPossibleDays}
+      />
 
       <SmallInput
-        onChangeInput={onChangeSmallInput}
-        value=""
+        onChangeSmallInput={onChangeSmallInput}
+        value={gitHub}
         name="gitURL"
         title="6. GitHub 계정이 있다면 링크를 올려주세요. (선택)"
         placeholder="ex) https://github.com/likelionsg"

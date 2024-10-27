@@ -7,7 +7,6 @@ import {
   personalInformation,
   personalPhoneNumber
 } from '@/utils/recruitMockData'
-import { stringify } from 'querystring'
 
 //
 //
@@ -34,7 +33,7 @@ const PersonalInformationForm = ({
     phoneNumber: ''
   })
 
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeSmallInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
     setInfo(prevInfo => ({
@@ -42,7 +41,7 @@ const PersonalInformationForm = ({
       [name as keyof InfoState]: value
     }))
 
-    // console.log(info)
+    console.log(info)
   }
 
   return (
@@ -51,7 +50,7 @@ const PersonalInformationForm = ({
         {personalInformation.map((item, index) => (
           <SmallInput
             key={index}
-            onChangeInput={onChangeInput}
+            onChangeSmallInput={onChangeSmallInput}
             value={info[item.name as keyof InfoState]}
             name={item.name}
             title={item.title}
@@ -60,7 +59,7 @@ const PersonalInformationForm = ({
         ))}
 
         <SmallInput
-          onChangeInput={onChangeInput}
+          onChangeSmallInput={onChangeSmallInput}
           value={info.phoneNumber}
           name="phoneNumber"
           title={personalPhoneNumber.title}

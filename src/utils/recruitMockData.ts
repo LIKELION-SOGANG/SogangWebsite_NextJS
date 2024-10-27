@@ -114,11 +114,11 @@ export const meeting = [
     times: [18, 19, 20]
   },
   {
-    interviewDate: `${formatDate(new Date())}`,
+    interviewDate: `${formatDate(new Date(new Date().setDate(new Date().getDate() + 1)))}`,
     times: [18, 19, 20]
   },
   {
-    interviewDate: `${formatDate(new Date())}`,
+    interviewDate: `${formatDate(new Date(new Date().setDate(new Date().getDate() + 2)))}`,
     times: [18, 19, 20]
   }
 ]
